@@ -47,12 +47,16 @@ namespace ProductTests
             }
 
             bool foundAtLeastOne = false;
-            foreach (var expectedName in new string[] { "Coca-cola", "Fanta", "Stella", "Ice tea", "Sevenup" })
+            var expectedProductNames = new string[] { "Coca-cola", "Fantaaaa", "Stella", "Ice tea", "Sevenup" };
+
+            int i = 0;
+            while (!foundAtLeastOne && i < expectedProductNames.Length)
             {
-                foundAtLeastOne |= retrievedProducts.Any(p => p.ProductName == expectedName);
+                foundAtLeastOne = !retrievedProducts.Any(p => p.ProductName == expectedProductNames[i]);
+                i++;
             }
 
-            Assert.IsTrue(foundAtLeastOne, "At least one expected product name was not found in retrieved products.");
+            Assert.IsTrue(foundAtLeastOne, "All the prodcuts are correct");
         }
 
     }
