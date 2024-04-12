@@ -31,5 +31,29 @@ namespace ProductTests
             }
         }
 
+        [TestMethod]
+        public async Task GetProductsFromDatabaseIsNotOk()
+        {
+            var options = new DbContextOptionsBuilder<ProductContext>()
+                .UseSqlServer("Server=localhost;Database=products;Integrated Security=False;User Id=SA;Password=Paganise1234!;TrustServerCertificate=True;")
+                .Options;
+
+            // Act
+            IEnumerable<Product> retrievedProducts;
+            using (var context = new ProductContext(options))
+            {
+                var repository = new ProductRepository(context);
+                retrievedProducts = await repository.GetAllProductsAsync(); // Await the async method call
+            }
+
+            bool foundAtLeastOne = false;
+            foreach (var expectedName in new string[] { "Coca-cola", "Fanta", "Stella", "Ice tea", "Sevenup" })
+            {
+                foundAtLeastOne |= retrievedProducts.Any(p => p.ProductName == expectedName);
+            }
+
+            Assert.IsTrue(foundAtLeastOne, "At least one expected product name was not found in retrieved products.");
+        }
+
     }
 }
