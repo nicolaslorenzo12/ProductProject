@@ -10,6 +10,11 @@ namespace ProductBackend.Repository
     {
         private readonly ProductContext context;
 
+        public ProductRepository(ProductContext context)
+        {
+            this.context = context;
+        }
+
         public void Dispose()
         {
             throw new NotImplementedException();
