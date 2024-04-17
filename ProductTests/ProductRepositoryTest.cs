@@ -11,13 +11,13 @@ namespace ProductTests
         [TestMethod]
         public async Task GetProductsFromDatabaseIsOk()
         {
-            var options = new DbContextOptionsBuilder<ProductContext>()
+            var options = new DbContextOptionsBuilder<Context>()
                 .UseSqlServer("Server=localhost;Database=products;Integrated Security=False;User Id=SA;Password=Paganise1234!;TrustServerCertificate=True;")
                 .Options;
 
             // Act
-            IEnumerable<Product> retrievedProducts;
-            using (var context = new ProductContext(options))
+            IReadOnlyCollection<Product> retrievedProducts;
+            using (var context = new Context(options))
             {
                 var repository = new ProductRepository(context);
                 retrievedProducts = await repository.GetAllProductsAsync(); // Await the async method call
@@ -34,13 +34,13 @@ namespace ProductTests
         [TestMethod]
         public async Task GetProductsFromDatabaseIsNotOk()
         {
-            var options = new DbContextOptionsBuilder<ProductContext>()
+            var options = new DbContextOptionsBuilder<Context>()
                 .UseSqlServer("Server=localhost;Database=products;Integrated Security=False;User Id=SA;Password=Paganise1234!;TrustServerCertificate=True;")
                 .Options;
 
             // Act
-            IEnumerable<Product> retrievedProducts;
-            using (var context = new ProductContext(options))
+            IReadOnlyCollection<Product> retrievedProducts;
+            using (var context = new Context(options))
             {
                 var repository = new ProductRepository(context);
                 retrievedProducts = await repository.GetAllProductsAsync(); // Await the async method call

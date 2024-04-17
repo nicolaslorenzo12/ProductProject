@@ -1,22 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProductBackend.Models
 {
     public class Product
     {
-        public Product(string productName, decimal price)
+        public Product(string productName)
         {
             ProductName = productName;
-            Price = price;
         }
 
-        public Product(int id, string productName, decimal price)
+        public Product(int id, string productName)
         {
             Id = id;
             ProductName = productName;
-            Price = price;
         }
 
         [Key]
@@ -25,8 +22,5 @@ namespace ProductBackend.Models
         [Required]
         public string ProductName { get; set; }
 
-        [Required]
-        [Column(TypeName = "decimal(18,2)")] // Adjust precision and scale as needed
-        public decimal Price { get; set; }
     }
 }

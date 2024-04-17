@@ -6,21 +6,21 @@ using ProductBackend.Data;
 using ProductBackend.Models;
 namespace ProductBackend.Repository
 {
-    public class ProductRepository : ProductRepositoryInterface
+    public class ProductRepository : IProductRepository
     {
-        private readonly ProductContext context;
+        private readonly Context context;
 
-        public ProductRepository(ProductContext context)
+        public ProductRepository(Context context)
         {
             this.context = context;
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        //public void Dispose()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IReadOnlyCollection<Product>> GetAllProductsAsync()
         {
             return await context.Products.ToListAsync();
         }

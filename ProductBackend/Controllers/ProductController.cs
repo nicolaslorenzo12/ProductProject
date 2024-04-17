@@ -9,22 +9,18 @@ namespace ProductBackend.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductServiceInterface productService;
+        private readonly IProductService productService;
 
-        public ProductController(ProductService productService)
-        {
-            this.productService = productService;
-        }
-
-        public ProductController(ProductServiceInterface productService)
+        public ProductController(IProductService productService)
         {
             this.productService = productService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IReadOnlyCollection<Product>>> GetProducts()
         {
                 var products = await productService.GetProductsAsync();
+                Console.WriteLine(products);
                 return Ok(products);          
         }
     }
