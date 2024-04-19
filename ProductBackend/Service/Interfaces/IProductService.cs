@@ -1,6 +1,6 @@
 ﻿using ProductBackend.Models;
 
-namespace ProductBackend.Service
+namespace ProductBackend.Service.Interfaces
 {
     public interface IProductService
     {

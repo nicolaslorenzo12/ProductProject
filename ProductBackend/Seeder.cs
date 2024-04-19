@@ -9,11 +9,11 @@ namespace ProductBackend
         public static void SeedProducts(Context context)
         {
 
-            //context.Products.RemoveRange(context.Products);
-            //context.Locations.RemoveRange(context.Locations);
-            //context.SuperMarkets.RemoveRange(context.SuperMarkets);
-            //context.SuperMarketProducts.RemoveRange(context.SuperMarketProducts);
-            //context.SaveChanges();
+            context.Products.RemoveRange(context.Products);
+            context.Locations.RemoveRange(context.Locations);
+            context.SuperMarkets.RemoveRange(context.SuperMarkets);
+            context.SuperMarketProducts.RemoveRange(context.SuperMarketProducts);
+            context.SaveChanges();
 
 
             var products = new Product[]
@@ -45,21 +45,21 @@ namespace ProductBackend
 
             var supermarketProducts = new SuperMarketProduct[]
             {
-                new SuperMarketProduct (supermarkets[0].Id, products[0].Id, 1.0m),
-                new SuperMarketProduct (supermarkets[0].Id, products[1].Id, 1.1m),
-                new SuperMarketProduct (supermarkets[0].Id, products[2].Id, 1.2m),
-                new SuperMarketProduct (supermarkets[0].Id, products[3].Id, 1.3m),
-                new SuperMarketProduct (supermarkets[0].Id, products[4].Id, 1.4m),
-                new SuperMarketProduct (supermarkets[1].Id, products[0].Id, 1.5m),
-                new SuperMarketProduct (supermarkets[1].Id, products[1].Id, 1.6m),
-                new SuperMarketProduct (supermarkets[1].Id, products[2].Id, 1.7m),
-                new SuperMarketProduct (supermarkets[1].Id, products[3].Id, 1.8m),
-                new SuperMarketProduct (supermarkets[1].Id, products[4].Id, 1.9m),
-                new SuperMarketProduct (supermarkets[2].Id, products[0].Id, 2.0m),
-                new SuperMarketProduct (supermarkets[2].Id, products[1].Id, 2.1m),
-                new SuperMarketProduct (supermarkets[2].Id, products[2].Id, 2.2m),
-                new SuperMarketProduct (supermarkets[2].Id, products[3].Id, 2.3m),
-                new SuperMarketProduct (supermarkets[2].Id, products[4].Id, 2.4m)
+                new SuperMarketProduct (supermarkets[0], products[0], 1.0m),
+                new SuperMarketProduct (supermarkets[0], products[1], 1.1m),
+                new SuperMarketProduct (supermarkets[0], products[2], 1.2m),
+                new SuperMarketProduct (supermarkets[0], products[3], 1.3m),
+                new SuperMarketProduct (supermarkets[0], products[4], 1.4m),
+                new SuperMarketProduct (supermarkets[1], products[0], 1.5m),
+                new SuperMarketProduct (supermarkets[1], products[1], 1.6m),
+                new SuperMarketProduct (supermarkets[1], products[2], 1.7m),
+                new SuperMarketProduct (supermarkets[1], products[3], 1.8m),
+                new SuperMarketProduct (supermarkets[1], products[4], 1.9m),
+                new SuperMarketProduct (supermarkets[2], products[0], 2.0m),
+                new SuperMarketProduct (supermarkets[2], products[1], 2.1m),
+                new SuperMarketProduct (supermarkets[2], products[2], 2.2m),
+                new SuperMarketProduct (supermarkets[2], products[3], 2.3m),
+                new SuperMarketProduct (supermarkets[2], products[4], 2.4m)
             };
 
             // Add products to the database

@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Query.Internal;
 using NUnit.Framework.Constraints;
 using ProductBackend.Models;
-using ProductBackend.Repository;
+using ProductBackend.Repository.Interfaces;
+using ProductBackend.Service.Interfaces;
 
-namespace ProductBackend.Service
+namespace ProductBackend.Service.Implementations
 {
     public class ProductService : IProductService
     {

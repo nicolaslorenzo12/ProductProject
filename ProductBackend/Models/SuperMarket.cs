@@ -6,6 +6,7 @@ namespace ProductBackend.Models
     public class SuperMarket
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]

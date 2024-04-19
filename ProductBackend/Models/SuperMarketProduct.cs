@@ -12,6 +12,13 @@ namespace ProductBackend.Models
             Price = price;
         }
 
+        public SuperMarketProduct(SuperMarket superMarket, Product product, decimal price)
+        {
+            Price = price;
+            SuperMarket = superMarket;
+            Product = product;
+        }
+
         [Key, Column(Order = 0)]
         [ForeignKey("SuperMarket")]
         public int SuperMarketId { get; set; }

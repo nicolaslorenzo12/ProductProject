@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProductBackend.Data;
 using ProductBackend.Models;
-namespace ProductBackend.Repository
+using ProductBackend.Repository.Interfaces;
+namespace ProductBackend.Repository.Implementations
 {
     public class ProductRepository : IProductRepository
     {

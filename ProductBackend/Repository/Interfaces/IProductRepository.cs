@@ -1,5 +1,5 @@
 ﻿using ProductBackend.Models;
-namespace ProductBackend.Repository
+namespace ProductBackend.Repository.Interfaces
 {
     public interface IProductRepository
     {

@@ -3,8 +3,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using ProductBackend;
 using ProductBackend.Data;
-using ProductBackend.Repository;
-using ProductBackend.Service;
+using ProductBackend.Repository.Interfaces;
+using ProductBackend.Repository.Implementations;
+using ProductBackend.Service.Interfaces;
+using ProductBackend.Service.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 

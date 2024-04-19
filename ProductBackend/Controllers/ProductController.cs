@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductBackend.Models;
-using ProductBackend.Service;
+using ProductBackend.Service.Interfaces;
 using System.Xml;
 
 namespace ProductBackend.Controllers
