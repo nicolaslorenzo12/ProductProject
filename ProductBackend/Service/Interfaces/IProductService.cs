@@ -6,5 +6,6 @@ namespace ProductBackend.Service.Interfaces
     {
         Task<IReadOnlyCollection<Product>> GetProductsAsync();
         Task AddProduct (String productName);
+        Task DeleteProductById(int productId);
     }
 }

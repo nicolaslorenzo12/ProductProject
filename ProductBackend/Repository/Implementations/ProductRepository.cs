@@ -23,5 +23,24 @@ namespace ProductBackend.Repository.Implementations
             await context.Products.AddAsync(product);
             await context.SaveChangesAsync();
         }
+
+        public async Task RemoveProductAsync(int productId)
+        {
+            var productToDelete = await context.Products.FindAsync(productId);
+            await CheckIfProductisNullOrNotAndRemoveIfNotNull(productToDelete);
+        }
+
+        private async Task CheckIfProductisNullOrNotAndRemoveIfNotNull(Product productToDelete)
+        {
+            if (productToDelete == null)
+            {
+                throw new InvalidOperationException("Product not found");
+            }
+            else
+            {
+                context.Products.Remove(productToDelete);
+                await context.SaveChangesAsync();
+            }
+        }
     }
 }

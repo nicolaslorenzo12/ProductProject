@@ -31,5 +31,12 @@ namespace ProductBackend.Controllers
             await productService.AddProduct(productName);
             return Ok();
         }
+
+        [HttpDelete]
+        public async Task<ActionResult<Product>> DeleteProduct([FromBody] int productId)
+        {
+            await productService.DeleteProductById(productId);
+            return Ok();
+        }
     }
 }
