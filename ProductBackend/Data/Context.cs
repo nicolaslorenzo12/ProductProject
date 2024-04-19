@@ -27,6 +27,7 @@ namespace ProductBackend.Data
 
             modelBuilder.Entity<SuperMarketProduct>()
                 .HasKey(sp => new { sp.SuperMarketId, sp.ProductId });
+
         }
     }
 }

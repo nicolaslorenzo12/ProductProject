@@ -29,9 +29,18 @@ namespace ProductBackend.Models
             this.name = name;
         }
 
+        public SuperMarket(int id, string name, Location location)
+        {
+            Id = id;
+            this.name = name;
+            this.Location = location;
+            this.LocationId = location.locationId;
+        }
+
         public void AddLocation(Location location)
         {
             this.Location = location;
+            this.LocationId = location.locationId;
         }
     }
 }
