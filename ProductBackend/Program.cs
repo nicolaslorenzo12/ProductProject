@@ -19,8 +19,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ISuperMarketService, SuperMarketService>();
+builder.Services.AddTransient<ILocationService, LocationService>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<ISuperMarketRepository, SuperMarketRepository>();
+builder.Services.AddTransient<ILocationRepository, LocationRepository>();
 
 // Add CORS configuration
 builder.Services.AddCors(options =>
