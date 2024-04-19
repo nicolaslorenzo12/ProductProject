@@ -13,14 +13,15 @@ namespace ProductBackend.Repository.Implementations
             this.context = context;
         }
 
-        //public void Dispose()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public async Task<IReadOnlyCollection<Product>> GetAllProductsAsync()
         {
             return await context.Products.ToListAsync();
+        }
+
+        public async Task CreateProductAsync(Product product)
+        {
+            await context.Products.AddAsync(product);
+            await context.SaveChangesAsync();
         }
     }
 }

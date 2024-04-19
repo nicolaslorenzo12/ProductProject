@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductBackend.Models;
+using ProductBackend.Service.Implementations;
 using ProductBackend.Service.Interfaces;
 using System.Xml;
 
@@ -22,6 +23,13 @@ namespace ProductBackend.Controllers
                 var products = await productService.GetProductsAsync();
                 Console.WriteLine(products);
                 return Ok(products);          
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Product>> AddProduct([FromBody] string productName)
+        {
+            await productService.AddProduct(productName);
+            return Ok();
         }
     }
 }

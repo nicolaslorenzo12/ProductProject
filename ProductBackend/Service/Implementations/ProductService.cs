@@ -15,6 +15,12 @@ namespace ProductBackend.Service.Implementations
             this.productRepository = productRepository;
         }
 
+        public async Task AddProduct(String productName)
+        {
+            Product productToBeAdded = new Product(productName);
+            await productRepository.CreateProductAsync(productToBeAdded);
+        }
+
         public async Task<IReadOnlyCollection<Product>> GetProductsAsync()
         {
             return await productRepository.GetAllProductsAsync();
