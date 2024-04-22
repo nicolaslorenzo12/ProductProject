@@ -22,6 +22,11 @@ namespace ProductBackend.Repository.Implementations
             await context.SaveChangesAsync();
         }
 
+        public async Task<SuperMarket> GetSuperMarketByIdAsync(int superMarketId)
+        {
+            return await context.SuperMarkets.FindAsync(superMarketId);
+        }
+
         public async Task<IReadOnlyCollection<SuperMarket>> ReadAllSuperMarketNamesAndLocationsAsync()
         {
             return await context.SuperMarkets.Include(s => s.Location).ToListAsync();

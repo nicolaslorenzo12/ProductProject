@@ -42,5 +42,10 @@ namespace ProductBackend.Repository.Implementations
                 await context.SaveChangesAsync();
             }
         }
+
+        public async Task<Product> GetProductByIdAsync(int productId)
+        {
+            return await context.Products.FindAsync(productId);
+        }
     }
 }

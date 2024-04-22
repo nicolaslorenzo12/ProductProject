@@ -6,5 +6,6 @@ namespace ProductBackend.Repository.Interfaces
         Task<IReadOnlyCollection<Product>> GetAllProductsAsync();
         Task CreateProductAsync(Product product);
         Task RemoveProductAsync(int productId);
+        Task<Product> GetProductByIdAsync(int productId);
     }
 }

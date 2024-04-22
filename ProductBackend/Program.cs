@@ -20,9 +20,11 @@ builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.C
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ISuperMarketService, SuperMarketService>();
 builder.Services.AddTransient<ILocationService, LocationService>();
+builder.Services.AddTransient<ISuperMarketProductService, SuperMarketProductService>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<ISuperMarketRepository, SuperMarketRepository>();
 builder.Services.AddTransient<ILocationRepository, LocationRepository>();
+builder.Services.AddTransient<ISuperMarketProductRepository, SuperMarketProductRepository>();
 
 // Add CORS configuration
 builder.Services.AddCors(options =>
