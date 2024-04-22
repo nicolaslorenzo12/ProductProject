@@ -40,5 +40,10 @@ namespace ProductBackend.Service.Implementations
             }
 
         }
+
+        public async Task<IReadOnlyCollection<SuperMarketProduct>> GetSuperMarketProductsOfASuperMarket(int superMarketId)
+        {
+            return await superMarketProductRepository.ReadSuperMarketProductsOfASuperMarket(superMarketId);
+        }
     }
 }

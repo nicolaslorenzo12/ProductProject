@@ -16,7 +16,9 @@ namespace ProductBackend.Models
         {
             Price = price;
             SuperMarket = superMarket;
+            SuperMarketId=superMarket.Id;
             Product = product;
+            ProductId = product.Id;
         }
 
         [Key, Column(Order = 0)]

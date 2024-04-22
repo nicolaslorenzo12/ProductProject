@@ -25,5 +25,12 @@ namespace ProductBackend.Controllers
             await superMarketProductService.ChangeThePriceOfAProductInASuperMarket(superMarketProductDto);
             return Ok();
         }
+
+        [HttpGet("{superMarketId}")]
+        public async Task<ActionResult<IReadOnlyCollection<SuperMarketProduct>>> GetSuperMarketProductGivenSuperMarketId(int superMarketId)
+        {
+            var superMarketProducts = await superMarketProductService.GetSuperMarketProductsOfASuperMarket(superMarketId);
+            return Ok(superMarketProducts);
+        }
     }
 }

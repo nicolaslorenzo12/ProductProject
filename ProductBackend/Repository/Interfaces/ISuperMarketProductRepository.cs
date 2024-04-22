@@ -6,5 +6,6 @@ namespace ProductBackend.Repository.Interfaces
     {
         Task UpdatePriceOfAProductInASuperMarketAsync(SuperMarketProduct superMarketProduct, decimal newPrice);
         Task<SuperMarketProduct> FindSuperMarketProductByProductAndSuperMarketId(int  productId, int superMarketId);
+        Task<IReadOnlyCollection<SuperMarketProduct>> ReadSuperMarketProductsOfASuperMarket(int superMarketId);
     }
 }
