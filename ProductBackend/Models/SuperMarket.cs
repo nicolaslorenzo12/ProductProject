@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ProductBackend.Models
 {
@@ -12,15 +13,23 @@ namespace ProductBackend.Models
         [Required]
         public string name { get; set; }
 
+        [AllowNull]
         public int LocationId { get; set; }
 
-        [Required]
         [ForeignKey("LocationId")]
+        [AllowNull]
         public Location Location { get; set; }
 
         public SuperMarket(string name)
         {
             this.name = name;
+        }
+
+        public SuperMarket(string name, Location location)
+        {
+            this.name = name;
+            Location = location;
+            LocationId = location.locationId;
         }
 
         public SuperMarket(int id, string name)
@@ -33,8 +42,8 @@ namespace ProductBackend.Models
         {
             Id = id;
             this.name = name;
-            this.Location = location;
-            this.LocationId = location.locationId;
+            Location = location;
+            LocationId = location.locationId;
         }
 
         public void AddLocation(Location location)

@@ -18,5 +18,16 @@ namespace ProductBackend.Repository.Implementations
             await context.Locations.AddAsync(location);
             await context.SaveChangesAsync();
         }
+
+        public async Task<Location> FindLocationById(int locationId)
+        {
+            return await context.Locations.FindAsync(locationId);
+        }
+       
+        public async Task RemoveLocationAsync(Location location)
+        {           
+            context.Locations.Remove(location);
+            await context.SaveChangesAsync();
+        }
     }
 }

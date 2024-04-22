@@ -15,6 +15,13 @@ namespace ProductBackend.Repository.Implementations
         {
             this.context = context;
         }
+
+        public async Task CreateSuperMarket(SuperMarket newSuperMarket)
+        {
+            await context.SuperMarkets.AddAsync(newSuperMarket);
+            await context.SaveChangesAsync();
+        }
+
         public async Task<IReadOnlyCollection<SuperMarket>> ReadAllSuperMarketNamesAndLocationsAsync()
         {
             return await context.SuperMarkets.Include(s => s.Location).ToListAsync();

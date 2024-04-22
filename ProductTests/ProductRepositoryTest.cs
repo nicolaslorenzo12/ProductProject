@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductBackend.Data;
 using ProductBackend.Models;
-using ProductBackend.Repository;
+using ProductBackend.Repository.Implementations;
 
 namespace ProductTests
 {

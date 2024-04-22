@@ -11,8 +11,8 @@ using ProductBackend.Data;
 namespace ProductBackend.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240417111444_supermarketproducts")]
-    partial class supermarketproducts
+    [Migration("20240422075128_locationnullable")]
+    partial class locationnullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

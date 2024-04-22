@@ -19,9 +19,16 @@ namespace ProductBackend.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<Product>> AddLocation([FromBody] LocationDto locationDto)
+        public async Task<ActionResult<Location>> AddLocation([FromBody] LocationDto locationDto)
         {
-            await locationService.AddLocation(locationDto.street, locationDto.number, locationDto.city, locationDto.zip);
+            await locationService.AddLocation(locationDto);
+            return Ok();
+        }
+        
+        [HttpDelete]
+        public async Task<ActionResult<Product>> DeleteLocation([FromBody] int locationId)
+        {
+            await locationService.DeleteLocation(locationId);
             return Ok();
         }
 

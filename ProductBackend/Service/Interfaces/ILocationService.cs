@@ -1,7 +1,10 @@
-﻿namespace ProductBackend.Service.Interfaces
+﻿using ProductBackend.Dto;
+
+namespace ProductBackend.Service.Interfaces
 {
     public interface ILocationService
     {
-        Task AddLocation(string street, int houseNumber, string city, string zipCode);
+        Task AddLocation(LocationDto locationDto);
+        Task DeleteLocation(int locationId);
     }
 }

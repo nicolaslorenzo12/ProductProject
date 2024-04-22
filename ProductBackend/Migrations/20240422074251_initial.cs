@@ -5,7 +5,7 @@
 namespace ProductBackend.Migrations
 {
     /// <inheritdoc />
-    public partial class supermarketproducts : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,7 +46,7 @@ namespace ProductBackend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LocationId = table.Column<int>(type: "int", nullable: false)
+                    LocationId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

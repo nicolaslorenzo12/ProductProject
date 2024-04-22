@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductBackend.Dto;
 using ProductBackend.Models;
 using ProductBackend.Service.Implementations;
 using ProductBackend.Service.Interfaces;
@@ -21,6 +22,13 @@ namespace ProductBackend.Controllers
         {
             var superMarkets = await superMarketService.GetAllSuperMarketsAsync();
             return Ok(superMarkets);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<SuperMarket>> AddSuperMarket([FromBody] SuperMarketDto superMarketDto)
+        {
+            await superMarketService.AddSuperMarket(superMarketDto);
+            return Ok();
         }
     }
 }
