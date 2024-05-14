@@ -5,7 +5,7 @@ namespace ProductBackend.Repository.Interfaces
     public interface ISuperMarketProductRepository
     {
         Task UpdatePriceOfAProductInASuperMarketAsync(SuperMarketProduct superMarketProduct, decimal newPrice);
-        Task<SuperMarketProduct> FindSuperMarketProductByProductAndSuperMarketId(int  productId, int superMarketId);
-        Task<IReadOnlyCollection<SuperMarketProduct>> ReadSuperMarketProductsOfASuperMarket(int superMarketId);
+        Task<SuperMarketProduct> FindSuperMarketProductByProductAndSuperMarketIdAsync(int  productId, int superMarketId);
+        Task<List<SuperMarketProduct>> ReadSuperMarketProductsOfASuperMarketAsync(int superMarketId);
     }
 }

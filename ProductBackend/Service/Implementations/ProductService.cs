@@ -29,7 +29,7 @@ namespace ProductBackend.Service.Implementations
 
         public async Task<IReadOnlyCollection<Product>> GetProductsAsync()
         {
-            return await productRepository.GetAllProductsAsync();
+            return await productRepository.ReadAllProductsAsync();
         }
     }
 }

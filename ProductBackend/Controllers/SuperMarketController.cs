@@ -25,9 +25,16 @@ namespace ProductBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<SuperMarket>> AddSuperMarket([FromBody] SuperMarketDto superMarketDto)
+        public async Task<ActionResult<SuperMarket>> AddSuperMarket([FromBody] AddSuperMarketDto addSupermarketDto)
         {
-            await superMarketService.AddSuperMarket(superMarketDto);
+            await superMarketService.AddSuperMarket(addSupermarketDto);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<SuperMarket>> DeleteSuperMarket(int supermarketId)
+        {
+            await superMarketService.DeleteSupermarket(supermarketId);
             return Ok();
         }
     }

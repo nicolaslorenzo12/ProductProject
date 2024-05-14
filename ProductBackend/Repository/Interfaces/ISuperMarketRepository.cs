@@ -6,6 +6,7 @@ namespace ProductBackend.Repository.Interfaces
     {
         Task<IReadOnlyCollection<SuperMarket>> ReadAllSuperMarketNamesAndLocationsAsync();
         Task CreateSuperMarket(SuperMarket newSuperMarket);
-        Task<SuperMarket> GetSuperMarketByIdAsync(int superMarketId);
+        Task<SuperMarket> FindSuperMarketByIdAsync(int superMarketId);
+        Task RemoveSupermarket(SuperMarket superMarket);
     }
 }

@@ -16,12 +16,12 @@ namespace ProductBackend.Repository.Implementations
             this.context = context;
         }
 
-        public async Task<SuperMarketProduct> FindSuperMarketProductByProductAndSuperMarketId(int productId, int superMarketId)
+        public async Task<SuperMarketProduct> FindSuperMarketProductByProductAndSuperMarketIdAsync(int productId, int superMarketId)
         {
             return await context.SuperMarketProducts.FirstOrDefaultAsync(smp => smp.ProductId == productId && smp.SuperMarketId == superMarketId);
         }
 
-        public async Task<IReadOnlyCollection<SuperMarketProduct>> ReadSuperMarketProductsOfASuperMarket(int superMarketId)
+        public async Task<List<SuperMarketProduct>> ReadSuperMarketProductsOfASuperMarketAsync(int superMarketId)
         {
             return await context.SuperMarketProducts
                 .Where(sp => sp.SuperMarketId == superMarketId)

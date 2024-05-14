@@ -22,14 +22,14 @@ namespace ProductBackend.Controllers
         [HttpPatch]
         public async Task<ActionResult<SuperMarketProduct>> ChangePriceOfAProductOfASuperMarket([FromBody] SuperMarketProductDto superMarketProductDto)
         {
-            await superMarketProductService.ChangeThePriceOfAProductInASuperMarket(superMarketProductDto);
+            await superMarketProductService.ChangeThePriceOfAProductInASuperMarketAsync(superMarketProductDto);
             return Ok();
         }
 
         [HttpGet("{superMarketId}")]
         public async Task<ActionResult<IReadOnlyCollection<SuperMarketProduct>>> GetSuperMarketProductGivenSuperMarketId(int superMarketId)
         {
-            var superMarketProducts = await superMarketProductService.GetSuperMarketProductsOfASuperMarket(superMarketId);
+            List<SuperMarketProductDto> superMarketProducts = await superMarketProductService.GetSuperMarketProductsOfASuperMarketAsync(superMarketId);
             return Ok(superMarketProducts);
         }
     }

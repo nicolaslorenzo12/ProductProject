@@ -13,7 +13,7 @@ namespace ProductBackend.Repository.Implementations
             this.context = context;
         }
 
-        public async Task<IReadOnlyCollection<Product>> GetAllProductsAsync()
+        public async Task<IReadOnlyCollection<Product>> ReadAllProductsAsync()
         {
             return await context.Products.ToListAsync();
         }
@@ -43,7 +43,7 @@ namespace ProductBackend.Repository.Implementations
             }
         }
 
-        public async Task<Product> GetProductByIdAsync(int productId)
+        public async Task<Product> FindProductByIdAsync(int productId)
         {
             return await context.Products.FindAsync(productId);
         }

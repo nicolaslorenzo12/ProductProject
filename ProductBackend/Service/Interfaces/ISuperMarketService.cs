@@ -6,6 +6,7 @@ namespace ProductBackend.Service.Interfaces
     public interface ISuperMarketService
     {
         Task<IReadOnlyCollection<SuperMarket>> GetAllSuperMarketsAsync();
-        Task AddSuperMarket(SuperMarketDto superMarketDto);
+        Task AddSuperMarket(AddSuperMarketDto superMarketDto);
+        Task DeleteSupermarket(int supermarketId);
     }
 }

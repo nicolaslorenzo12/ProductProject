@@ -22,7 +22,7 @@ namespace ProductBackend.Repository.Implementations
             await context.SaveChangesAsync();
         }
 
-        public async Task<SuperMarket> GetSuperMarketByIdAsync(int superMarketId)
+        public async Task<SuperMarket> FindSuperMarketByIdAsync(int superMarketId)
         {
             return await context.SuperMarkets.FindAsync(superMarketId);
         }
@@ -30,6 +30,13 @@ namespace ProductBackend.Repository.Implementations
         public async Task<IReadOnlyCollection<SuperMarket>> ReadAllSuperMarketNamesAndLocationsAsync()
         {
             return await context.SuperMarkets.Include(s => s.Location).ToListAsync();
+        }
+
+        public async Task RemoveSupermarket(SuperMarket superMarket)
+        {
+            context.SuperMarkets.Remove(superMarket);
+            await context.SaveChangesAsync();
+
         }
     }
 }

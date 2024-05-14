@@ -16,9 +16,15 @@ namespace ProductBackend.Service.Implementations
             this.locationRepository = locationRepository;
         }
 
-        public async Task AddSuperMarket(SuperMarketDto superMarketDto)
+        public async Task AddSuperMarket(AddSuperMarketDto superMarketDto)
         {
-            Location locationOfTheSuperMarketToAdd = await locationRepository.FindLocationById(superMarketDto.id);
+
+            Location locationOfTheSuperMarketToAdd = null;
+
+            if (superMarketDto.LocationId != null)
+            {
+                locationOfTheSuperMarketToAdd = await locationRepository.FindLocationById(superMarketDto.LocationId.Value);
+            }
 
             if (locationOfTheSuperMarketToAdd == null) 
             {
@@ -26,8 +32,26 @@ namespace ProductBackend.Service.Implementations
             }
             else
             {
-                SuperMarket superMarketToAdd = new SuperMarket(superMarketDto.name, locationOfTheSuperMarketToAdd);
+                SuperMarket superMarketToAdd = new SuperMarket(superMarketDto.Name, locationOfTheSuperMarketToAdd);
                 await superMarketRepository.CreateSuperMarket(superMarketToAdd);
+            }
+        }
+
+        public async Task DeleteSupermarket(int supermarketId)
+        {
+            SuperMarket superMarketToDelete = await  superMarketRepository.FindSuperMarketByIdAsync(supermarketId);
+            await CheckIfSupermarketNotNullToDelete(superMarketToDelete);
+        }
+
+        public async Task CheckIfSupermarketNotNullToDelete(SuperMarket superMarketToDelete)
+        {
+            if (superMarketToDelete == null)
+            {
+                throw new ArgumentNullException("Supermarket was not found");
+            }
+            else
+            {
+                await superMarketRepository.RemoveSupermarket(superMarketToDelete);
             }
         }
 

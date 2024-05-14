@@ -3,9 +3,9 @@ namespace ProductBackend.Repository.Interfaces
 {
     public interface IProductRepository
     {
-        Task<IReadOnlyCollection<Product>> GetAllProductsAsync();
+        Task<IReadOnlyCollection<Product>> ReadAllProductsAsync();
         Task CreateProductAsync(Product product);
         Task RemoveProductAsync(int productId);
-        Task<Product> GetProductByIdAsync(int productId);
+        Task<Product> FindProductByIdAsync(int productId);
     }
 }

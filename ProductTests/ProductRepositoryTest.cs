@@ -20,7 +20,7 @@ namespace ProductTests
             using (var context = new Context(options))
             {
                 var repository = new ProductRepository(context);
-                retrievedProducts = await repository.GetAllProductsAsync(); // Await the async method call
+                retrievedProducts = await repository.ReadAllProductsAsync(); // Await the async method call
             }
 
             // Assert
@@ -43,7 +43,7 @@ namespace ProductTests
             using (var context = new Context(options))
             {
                 var repository = new ProductRepository(context);
-                retrievedProducts = await repository.GetAllProductsAsync(); // Await the async method call
+                retrievedProducts = await repository.ReadAllProductsAsync(); // Await the async method call
             }
 
             bool foundAtLeastOne = false;

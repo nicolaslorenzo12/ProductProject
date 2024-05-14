@@ -5,7 +5,7 @@ namespace ProductBackend.Service.Interfaces
 {
     public interface ISuperMarketProductService
     {
-        Task ChangeThePriceOfAProductInASuperMarket(SuperMarketProductDto superMarketProductDto);
-        Task<IReadOnlyCollection<SuperMarketProduct>> GetSuperMarketProductsOfASuperMarket(int superMarketId);
+        Task ChangeThePriceOfAProductInASuperMarketAsync(SuperMarketProductDto superMarketProductDto);
+        Task<List<SuperMarketProductDto>> GetSuperMarketProductsOfASuperMarketAsync(int superMarketId);
     }
 }

@@ -2,6 +2,7 @@
 using ProductBackend.Models;
 using ProductBackend.Repository.Interfaces;
 using ProductBackend.Service.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace ProductBackend.Service.Implementations
 {
@@ -19,10 +20,10 @@ namespace ProductBackend.Service.Implementations
             this.superMarketRepository = superMarketRepository;
         }
 
-        public async Task ChangeThePriceOfAProductInASuperMarket(SuperMarketProductDto superMarketProductDto)
+        public async Task ChangeThePriceOfAProductInASuperMarketAsync(SuperMarketProductDto superMarketProductDto)
         {
-            Product product = await productRepository.GetProductByIdAsync(superMarketProductDto.prdtId);
-            SuperMarket superMarket = await superMarketRepository.GetSuperMarketByIdAsync(superMarketProductDto.spmktId);
+            Product product = await productRepository.FindProductByIdAsync(superMarketProductDto.prdtId);
+            SuperMarket superMarket = await superMarketRepository.FindSuperMarketByIdAsync(superMarketProductDto.spmktId);
             decimal newPrice = superMarketProductDto.price;
 
             if(product == null)
@@ -35,15 +36,18 @@ namespace ProductBackend.Service.Implementations
             }
             else
             {
-                SuperMarketProduct superMarketProductToChangePrice = await superMarketProductRepository.FindSuperMarketProductByProductAndSuperMarketId(product.Id, superMarket.Id);
+                SuperMarketProduct superMarketProductToChangePrice = await superMarketProductRepository.FindSuperMarketProductByProductAndSuperMarketIdAsync(product.Id, superMarket.Id);
                 await superMarketProductRepository.UpdatePriceOfAProductInASuperMarketAsync(superMarketProductToChangePrice, newPrice);
             }
 
         }
 
-        public async Task<IReadOnlyCollection<SuperMarketProduct>> GetSuperMarketProductsOfASuperMarket(int superMarketId)
+        public async Task<List<SuperMarketProductDto>> GetSuperMarketProductsOfASuperMarketAsync(int superMarketId)
         {
-            return await superMarketProductRepository.ReadSuperMarketProductsOfASuperMarket(superMarketId);
+            List<SuperMarketProduct> supermarketProducts = await superMarketProductRepository.ReadSuperMarketProductsOfASuperMarketAsync(superMarketId);
+            List<SuperMarketProductDto> supermarketProductsDto = new List<SuperMarketProductDto>();
+            supermarketProducts.ForEach(p => { supermarketProductsDto.Add(new SuperMarketProductDto(p.ProductId, p.SuperMarket.Id, p.SuperMarket.name, p.Product.ProductName ,p.Price)); });
+            return supermarketProductsDto;
         }
     }
 }
